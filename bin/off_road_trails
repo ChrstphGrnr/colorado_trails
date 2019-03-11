@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+
+require_relative '../lib/off_road_trails.rb'
+
+puts "hello world!"
+
