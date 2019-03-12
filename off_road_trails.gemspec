@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["ChrstphGrnr"]
   spec.email         = ["46858206+ChrstphGrnr@users.noreply.github.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "A hiking/off-roading gem."
+  spec.description   = "This gem was developed for users to have access to the top rated hiking or off-road trails in Colorado."
+  spec.homepage      = "https://github.com/ChrstphGrnr/off_road_trails.git"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-    spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+    spec.metadata["source_code_uri"] = "https://github.com/ChrstphGrnr/off_road_trails"
+    
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
@@ -39,4 +39,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency 'pry'
+
+
+  spec.add_development_dependency 'nokogiri'
+  # spec.add_development_dependency 'open-uri'
+  
 end
