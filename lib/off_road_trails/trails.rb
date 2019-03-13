@@ -1,17 +1,11 @@
 class OffRoadTrails::Trails 
 
-    attr_accessor :name, :location, :rating, :description, :type 
+    attr_accessor :name, :location, :rating, :description, :type, :url
     @@all = []
 
-    def initialize(name, location, description, rating, type)
-        @name = name 
-        @location = location
-        @description = description
-        @rating = rating 
-        @type = type 
+    def initialize
         @@all << self
     end
-
 
 
     def self.all 

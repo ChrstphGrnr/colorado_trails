@@ -33,13 +33,13 @@ class OffRoadTrails::CLI
             input = gets.chomp.strip.downcase
             
             if input.to_i == 1 
-                puts "This is the current Top 20 of hiking trails in Colorado:\n\n"
-                OffRoadTrails::Scraper.new.trail_list(:hiking)
-                
+                OffRoadTrails::Scraper.trail_list(:hiking)
+                input = gets.chomp.strip.downcase
+
             elsif input.to_i == 2 
-                puts "This is the current Top 20 of off-roading trails in Colorado:\n\n"
-                OffRoadTrails::Scraper.new.trail_list(:offroad)
-                
+                OffRoadTrails::Scraper.trail_list(:offroad)
+                input = gets.chomp.strip.downcase
+
             elsif input == "menu"
                 puts "\nPlease chose from the following options: \nPress [1] for the Top 20 hiking trails in Colorado. \nPress [2] for the Top 20 Off-Roading trails in Colorado. \n\nType 'exit' to quit this program."
         
