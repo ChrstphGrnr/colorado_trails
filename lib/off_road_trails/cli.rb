@@ -33,11 +33,13 @@ class OffRoadTrails::CLI
         case input
 
         when 1
-            OffRoadTrails::Scraper.trail_list(:hiking)
+            trail_list(:hiking)
+            # OffRoadTrails::Scraper.trail_list(:hiking)
             menu_2
 
         when 2 
-            OffRoadTrails::Scraper.trail_list(:offroad)
+            trail_list(:offroad)
+            # OffRoadTrails::Scraper.trail_list(:offroad)
             menu_2
         when "menu"
             menu 
@@ -49,6 +51,11 @@ class OffRoadTrails::CLI
         end
         
     end
+
+    def trail_list(input)
+        OffRoadTrails::Scraper.trail_list(input)
+    end
+
 
         # while input != "exit"
 
@@ -80,21 +87,32 @@ class OffRoadTrails::CLI
 
     
 
-    def over_and_out
-        puts "\nGood Bye #{@user_name}, thanks for exploring."
-    end
+    
 
     def menu_2 
-        puts "Please chose from the following options:"
-        puts "Select a specific trail by it's number"
+
+        puts "\nSelect a specific trail by it's number, type 'menu' to return to the previous menu or type 'exit' to end this program."
         input = gets.chomp.downcase
-        input.include?("#") ? input.delete("#").to_i : input = input.to_i
-        puts input
-        binding.pry
+        input.include?("#") ? input.delete("#") : input
+        if input.to_i.between?(1, OffRoadTrails::Trails.all.length)
+            trail = OffRoadTrails::Trails.all[input.to_i - 1]
+            OffRoadTrails::Scraper.trail_details(trail)
+        elsif input == "menu"
+            self.menu
+        elsif input == "exit"
+            self.over_and_out
+        else 
+            puts "I don't understand your choice, please try again."
+            menu_2
+        end 
+        
     end
 
 
 
+    def over_and_out
+        puts "\nGoodbye #{@user_name}, thanks for exploring with us!"
+    end
 
 end
 

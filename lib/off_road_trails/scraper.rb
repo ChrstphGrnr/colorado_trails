@@ -4,15 +4,6 @@
 class OffRoadTrails::Scraper
     attr_accessor
     
-    @@all_trails = []
-    
-    def self.all 
-        @@all_trails
-    end
-
-    
-
-
 
     def self.trail_list(input)
 
@@ -48,9 +39,20 @@ class OffRoadTrails::Scraper
             puts trail.name + ', ' + trail.location
         end
         
-        puts "\nIf you would like to find out more about a trail, enter it's number. Other options are 'menu' and 'exit'."
-        
     end
+
+    def self.site(input)
+        if input == :offroad 
+            @site = "https://www.trails.com/toptrails.aspx?state=co&activity=od"
+        elsif input == :hiking
+            @site = "https://www.trails.com/toptrails.aspx?state=co&activity=hk"
+        end 
+    end
+
+    def self.trail_details(trail)
+        binding.pry
+    end
+    
     
 
 end
