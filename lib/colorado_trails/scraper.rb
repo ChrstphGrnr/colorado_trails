@@ -24,7 +24,7 @@ class ColoradoTrails::Scraper
         end
 
         url_list.each_with_index do |url, i|
-            trails[i][:url] = url 
+            trails[i][:url] = "https://www.trails.com" + url 
         end
 
         trails.each do |trail_info|
@@ -47,6 +47,8 @@ class ColoradoTrails::Scraper
         elsif input == :hiking
             @site = "https://www.trails.com/toptrails.aspx?state=co&activity=hk"
         end 
+        
+
     end
 
     def self.trail_details(trail)

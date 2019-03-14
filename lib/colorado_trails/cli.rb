@@ -39,7 +39,7 @@ class ColoradoTrails::CLI
             menu_2
 
         when 2 
-            puts "...loading hiking trails. This may take a moment.\n\n\n"
+            puts "...loading offroad trails. This may take a moment.\n\n\n"
             trail_list(:offroad)
             # ColoradoTrails::Scraper.trail_list(:offroad)
             menu_2
@@ -93,7 +93,11 @@ class ColoradoTrails::CLI
 
     def menu_2 
 
-        puts "\nSelect a specific trail by it's number, type 'menu' to return to the previous menu or type 'exit' to end this program."
+        puts "\nPlease chose from the following options:"
+        puts "-> Select a specific trail by it's number. " 
+        puts "-> Type 'menu' to return to the previous menu. "
+        puts "-> Type 'exit' to end this program."
+
         input = gets.chomp.downcase
         # binding.pry
         input.include?("#") ? input.delete!("#") : input
