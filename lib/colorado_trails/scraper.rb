@@ -47,12 +47,17 @@ class ColoradoTrails::Scraper
         elsif input == :hiking
             @site = "https://www.trails.com/toptrails.aspx?state=co&activity=hk"
         end 
-        
+
 
     end
 
     def self.trail_details(trail)
+        # binding.pry
+        site = trail.url    
+        doc = Nokogiri::HTML(open(site)).css('div.info_container').collect {|info| info}
+
         binding.pry
+        
     end
     
     

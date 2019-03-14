@@ -7,14 +7,15 @@ class ColoradoTrails::CLI
     
 
     def initialize
-        name 
-        welcome 
+        # name 
+        # welcome 
         menu   
     end
 
 
     def name 
-        puts "Before we begin, would you mind telling me your name?"
+        puts "\nWelcome to Colorado Trails!\n \nThis app can provide you with detailed info on the Top 20 trails in a variety of categories."
+        puts "Before we begin, would you mind telling me your name?\n\n"
         @user_name = gets.chomp
     end
 
@@ -39,7 +40,7 @@ class ColoradoTrails::CLI
             menu_2
 
         when 2 
-            puts "...loading offroad trails. This may take a moment.\n\n\n"
+            puts "\n...loading offroad trails. This may take a moment.\n\n\n"
             trail_list(:offroad)
             # ColoradoTrails::Scraper.trail_list(:offroad)
             menu_2
@@ -104,9 +105,9 @@ class ColoradoTrails::CLI
         if input.to_i.between?(1, ColoradoTrails::Trails.all.length)
             trail = ColoradoTrails::Trails.all[input.to_i - 1]
             ColoradoTrails::Scraper.trail_details(trail)
-        elsif input == "menu"
+        elsif input == "menu" 
             self.menu
-        elsif input == "exit"
+        elsif input == "exit" || input == "quit"
             self.over_and_out
         else 
             puts "I don't understand your choice, please try again."
