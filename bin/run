@@ -4,9 +4,9 @@
 
 require 'bundler/setup'
 
-require_relative '../lib/off_road_trails.rb'
+require_relative '../lib/colorado_trails.rb'
 
-OffRoadTrails::CLI.new
+ColoradoTrails::CLI.new
 
 
 

@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "off_road_trails"
+require "colorado_trails"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

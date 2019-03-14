@@ -1,6 +1,6 @@
 
 
-class OffRoadTrails::CLI
+class ColoradoTrails::CLI
 
     attr_accessor :input, :user_name, :trails
 
@@ -33,13 +33,15 @@ class OffRoadTrails::CLI
         case input
 
         when 1
+            puts "\n\n...loading hiking trails. This may take a moment.\n\n\n"
             trail_list(:hiking)
-            # OffRoadTrails::Scraper.trail_list(:hiking)
+            # ColoradoTrails::Scraper.trail_list(:hiking)
             menu_2
 
         when 2 
+            puts "...loading hiking trails. This may take a moment.\n\n\n"
             trail_list(:offroad)
-            # OffRoadTrails::Scraper.trail_list(:offroad)
+            # ColoradoTrails::Scraper.trail_list(:offroad)
             menu_2
         when "menu"
             menu 
@@ -53,7 +55,7 @@ class OffRoadTrails::CLI
     end
 
     def trail_list(input)
-        OffRoadTrails::Scraper.trail_list(input)
+        ColoradoTrails::Scraper.trail_list(input)
     end
 
 
@@ -62,13 +64,13 @@ class OffRoadTrails::CLI
         #     input = gets.chomp.strip.downcase
             
         #     if input.to_i == 1 
-        #         OffRoadTrails::Scraper.trail_list(:hiking)
+        #         ColoradoTrails::Scraper.trail_list(:hiking)
         #         input = gets.chomp.strip.downcase
                     
 
 
         #     elsif input.to_i == 2 
-        #         OffRoadTrails::Scraper.trail_list(:offroad)
+        #         ColoradoTrails::Scraper.trail_list(:offroad)
         #         input = gets.chomp.strip.downcase
 
         #     elsif input == "menu"
@@ -93,10 +95,11 @@ class OffRoadTrails::CLI
 
         puts "\nSelect a specific trail by it's number, type 'menu' to return to the previous menu or type 'exit' to end this program."
         input = gets.chomp.downcase
-        input.include?("#") ? input.delete("#") : input
-        if input.to_i.between?(1, OffRoadTrails::Trails.all.length)
-            trail = OffRoadTrails::Trails.all[input.to_i - 1]
-            OffRoadTrails::Scraper.trail_details(trail)
+        # binding.pry
+        input.include?("#") ? input.delete!("#") : input
+        if input.to_i.between?(1, ColoradoTrails::Trails.all.length)
+            trail = ColoradoTrails::Trails.all[input.to_i - 1]
+            ColoradoTrails::Scraper.trail_details(trail)
         elsif input == "menu"
             self.menu
         elsif input == "exit"

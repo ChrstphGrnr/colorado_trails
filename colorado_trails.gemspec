@@ -1,17 +1,17 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "off_road_trails/version"
+require "colorado_trails/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "off_road_trails"
-  spec.version       = OffRoadTrails::VERSION
+  spec.name          = "colorado_trails"
+  spec.version       = ColoradoTrails::VERSION
   spec.authors       = ["ChrstphGrnr"]
   spec.email         = ["46858206+ChrstphGrnr@users.noreply.github.com"]
 
   spec.summary       = "A hiking/off-roading gem."
   spec.description   = "This gem was developed for users to have access to the top rated hiking or off-road trails in Colorado."
-  spec.homepage      = "https://github.com/ChrstphGrnr/off_road_trails.git"
+  spec.homepage      = "https://github.com/ChrstphGrnr/colorado_trails.git"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/ChrstphGrnr/off_road_trails"
+    spec.metadata["source_code_uri"] = "https://github.com/ChrstphGrnr/colorado_trails"
     
   else
     raise "RubyGems 2.0 or newer is required to protect against " \

@@ -1,7 +1,7 @@
 # require 'pry'
 # require 'nokogiri'
 # require 'open-uri'
-class OffRoadTrails::Scraper
+class ColoradoTrails::Scraper
     attr_accessor
     
 
@@ -28,14 +28,14 @@ class OffRoadTrails::Scraper
         end
 
         trails.each do |trail_info|
-            new_trail = OffRoadTrails::Trails.new 
+            new_trail = ColoradoTrails::Trails.new 
             trail_info.each do |key, value|
                 new_trail.send("#{key}=", value)
             end  
         end
         
-        puts "\nHere are the Top 20 #{input} trails in Colorado:\n\n"
-        OffRoadTrails::Trails.all.each do |trail|
+       
+        ColoradoTrails::Trails.all.each do |trail|
             puts trail.name + ', ' + trail.location
         end
         

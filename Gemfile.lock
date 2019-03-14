@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    off_road_trails (0.1.0)
+    colorado_trails (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -35,8 +35,8 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.0)
+  colorado_trails!
   nokogiri
-  off_road_trails!
   pry
   rake (~> 10.0)
   rspec (~> 3.0)

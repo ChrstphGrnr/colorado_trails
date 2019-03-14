@@ -1,6 +1,6 @@
-RSpec.describe OffRoadTrails do
+RSpec.describe ColoradoTrails do
   it "has a version number" do
-    expect(OffRoadTrails::VERSION).not_to be nil
+    expect(ColoradoTrails::VERSION).not_to be nil
   end
 
   it "does something useful" do
