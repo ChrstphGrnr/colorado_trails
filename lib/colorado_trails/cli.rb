@@ -24,7 +24,7 @@ class ColoradoTrails::CLI
     end
 
     def menu 
-        sleep(1)
+        sleep(0.5)
         puts "\nPlease chose from the following trail options: 
               \nPress [1] for the Top 20 hiking trails in Colorado. 
               \nPress [2] for the Top 20 offroad trails in Colorado. 
@@ -91,20 +91,39 @@ class ColoradoTrails::CLI
             trail = ColoradoTrails::Trails.all[input.to_i - 1]
             ColoradoTrails::Scraper.trail_details(trail)
             trail.showcase_details
+            self.menu_3(trail)
+            
         elsif input == "menu" 
             self.menu
         elsif input == "exit" || input == "quit"
             self.over_and_out
         else 
             puts "I don't understand your choice, please try again."
-            menu_2
+            self.menu_2
         end 
-        
+ 
     end
 
-    
+    def menu_3(trail)
+        puts "\nThe following options are available:\n\n"
+        puts "-> Type 'menu' to return to the main menu for a choice of different types of trails."
+        puts "-> Type 'trail' to return to the trails menu for more trails like #{trail.name.delete("(/\#|[0-9]/)")}."
+        puts "-> Type 'exit' to end this program."
 
-
+        new_input = gets.chomp.downcase
+        case new_input 
+        when 'menu'
+            ColoradoTrails::Trails.clear
+            self.menu
+        when 'trail'
+            ColoradoTrails::Trails.name_location
+            self.menu_2
+        when 'exit'
+            self.over_and_out
+        when 'quit'
+            self.over_and_out
+        end
+    end
 
     def over_and_out
         puts "\nGoodbye #{@user_name}, thanks for exploring with us!"

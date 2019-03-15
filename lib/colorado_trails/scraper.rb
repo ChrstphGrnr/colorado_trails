@@ -23,15 +23,8 @@ class ColoradoTrails::Scraper
         trails.css('div.state').each_with_index {|location, i| ColoradoTrails::Trails.all[i].location = location.text.chomp(', CO')}
         
         trails.css('div.img-wrapper a').each_with_index {|url, i| ColoradoTrails::Trails.all[i].url = "https://www.trails.com" + url.attribute('href').value}
-        # binding.pryq
-        # trails.css('span.sprite-trails.sprite-ic-star').each_with_index {|stars, i| ColoradoTrails::Trails.all[i].rating = stars.length}
-
-        # binding.pry
-    
-
-
+       
         # original working code  
-
 
         # trails = []
 
@@ -58,7 +51,6 @@ class ColoradoTrails::Scraper
         #     end  
         # end
         
-       
         # ColoradoTrails::Trails.all.each do |trail|
         #     puts trail.name + ', ' + trail.location
         # end
@@ -73,7 +65,6 @@ class ColoradoTrails::Scraper
         elsif input == :mountainbiking
             @site = "https://www.trails.com/toptrails.aspx?state=co&activity=mb"
         end 
-
 
     end
 
@@ -107,21 +98,9 @@ class ColoradoTrails::Scraper
         end
 
         trail.rating = "#{doc.css('div.rating-section').children.css('img').attribute('alt').text[0]}/5 stars"
-        trail.description = doc.css('p.summary').text
-        
-        
-
-        
+        trail.description = doc.css('p.summary').text.delete'(/["]/)'
         # binding.pry
-
-        # rating scraper line:
-        # rating = page.css("div.rating-section").children.css('img').attribute('alt').text
-        # => "5 out of 5 stars"
-
-        
-        binding.pry
+    
     end
-    
-    
 
 end

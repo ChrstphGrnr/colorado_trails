@@ -26,7 +26,7 @@ class ColoradoTrails::Trails
     end
 
     def showcase_details
-        binding.pry
+        # binding.pry
         trail_name = self.name.delete("(/\#|[0-9]/)").strip
         puts "Here are the details for #{trail_name}:"
         puts "Location:     #{self.location}, CO"
@@ -36,6 +36,8 @@ class ColoradoTrails::Trails
         puts "Duration      #{self.duration}"
         puts "Difficulty    #{self.difficulty}"
         puts "Website       #{self.url}"
+
+        puts "\n\nHere is a short description of the trail:\n#{self.description.scan(/.{1,66} /).join("\n")}"
         
     end
 
