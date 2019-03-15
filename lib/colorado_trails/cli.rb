@@ -7,8 +7,8 @@ class ColoradoTrails::CLI
     
 
     def initialize
-        # name 
-        # welcome 
+        name 
+        welcome 
         menu   
     end
 
@@ -108,13 +108,14 @@ class ColoradoTrails::CLI
         puts "\nThe following options are available:\n\n"
         puts "-> Type 'menu' to return to the main menu for a choice of different types of trails."
         puts "-> Type 'trail' to return to the trails menu for more trails like #{trail.name.delete("(/\#|[0-9]/)")}."
-        puts "-> Type 'exit' to end this program."
+        puts "-> Type 'exit' to end this program.\n\n"
 
         new_input = gets.chomp.downcase
         case new_input 
         when 'menu'
             ColoradoTrails::Trails.clear
             self.menu
+            binding.pry
         when 'trail'
             ColoradoTrails::Trails.name_location
             self.menu_2
