@@ -25,28 +25,46 @@ class ColoradoTrails::CLI
 
     def menu 
         sleep(1)
-        puts "\nPlease chose from the following options: \nPress [1] for the Top 20 hiking trails in Colorado. \nPress [2] for the Top 20 offroad trails in Colorado. \n\nType 'exit' to quit this program."
+        puts "\nPlease chose from the following trail options: 
+              \nPress [1] for the Top 20 hiking trails in Colorado. 
+              \nPress [2] for the Top 20 offroad trails in Colorado. 
+              \nPress [3] for the Top 20 mountain-biking trails in Colorado.
+              \n\nType 'exit' to end this program.\n\n"
         
         input = gets.chomp.downcase
         
-        input == "1" || input == "2" ? input = input.to_i : input
+        if input.length == 1 
+            input = input.to_i\
+        elsif input == "quit"
+            input = "exit"
+        end
 
         case input
 
         when 1
             puts "\n\n...loading hiking trails. This may take a moment.\n\n\n"
             trail_list(:hiking)
-            # ColoradoTrails::Scraper.trail_list(:hiking)
+            ColoradoTrails::Trails.name_location
+           
             menu_2
 
         when 2 
             puts "\n...loading offroad trails. This may take a moment.\n\n\n"
             trail_list(:offroad)
-            # ColoradoTrails::Scraper.trail_list(:offroad)
+            ColoradoTrails::Trails.name_location
+            
             menu_2
+
+        when 3 
+            puts "\n...loading mountain-biking trails. This may take a moment. \n\n\n"
+            trail_list(:mountainbiking)
+            ColoradoTrails::Trails.name_location
+
+            menu_2
+
         when "menu"
             menu 
-        when "exit" || "quit"
+        when "exit"
             over_and_out
         else
             puts "Not a valid input!" 
@@ -58,46 +76,13 @@ class ColoradoTrails::CLI
     def trail_list(input)
         ColoradoTrails::Scraper.trail_list(input)
     end
-
-
-        # while input != "exit"
-
-        #     input = gets.chomp.strip.downcase
-            
-        #     if input.to_i == 1 
-        #         ColoradoTrails::Scraper.trail_list(:hiking)
-        #         input = gets.chomp.strip.downcase
-                    
-
-
-        #     elsif input.to_i == 2 
-        #         ColoradoTrails::Scraper.trail_list(:offroad)
-        #         input = gets.chomp.strip.downcase
-
-        #     elsif input == "menu"
-        #         puts "\nPlease chose from the following options: \nPress [1] for the Top 20 hiking trails in Colorado. \nPress [2] for the Top 20 Off-Roading trails in Colorado. \n\nType 'exit' to quit this program."
-        
-        #     elsif input == "exit"
-        #         over_and_out
-        #     else
-        #         puts "Not a valid input!" 
-        #         puts "Please chose from the following options: \nPress [1] for the Top 20 hiking trails in Colorado. \nPress [2] for the Top 20 Off-Roading trails in Colorado. \nType 'exit' to quit this program."
-
-        #     end
-        # end
-        
-
-
     
-
-    
-
     def menu_2 
 
         puts "\nPlease chose from the following options:"
-        puts "-> Select a specific trail by it's number. " 
-        puts "-> Type 'menu' to return to the previous menu. "
-        puts "-> Type 'exit' to end this program."
+        puts "\n-> Select a specific trail by it's number." 
+        puts "-> Type 'menu' to return to the previous menu."
+        puts "-> Type 'exit' to end this program.\n\n"
 
         input = gets.chomp.downcase
         # binding.pry
@@ -115,6 +100,8 @@ class ColoradoTrails::CLI
         end 
         
     end
+
+    
 
 
 
