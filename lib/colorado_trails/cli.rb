@@ -90,6 +90,7 @@ class ColoradoTrails::CLI
         if input.to_i.between?(1, ColoradoTrails::Trails.all.length)
             trail = ColoradoTrails::Trails.all[input.to_i - 1]
             ColoradoTrails::Scraper.trail_details(trail)
+            trail.showcase_details
         elsif input == "menu" 
             self.menu
         elsif input == "exit" || input == "quit"

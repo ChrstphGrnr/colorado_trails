@@ -81,16 +81,45 @@ class ColoradoTrails::Scraper
         # binding.pry
         site = trail.url    
         # binding.pry
-        doc_value = Nokogiri::HTML(open(site)).css('div.info_Data').collect {|info| info.text}
-        doc_key = Nokogiri::HTML(open(site)).css('div.info_label').collect {|info| info.text}
-        binding.pry
+        doc = Nokogiri::HTML(open(site)).css('div.Wrapper')
+
+        
+        info = doc.css('div.info_Data').collect {|label| label.text.strip}
+        labels = doc.css('div.info_label').collect {|info| info.text.strip}
+        
+        # binding.pry
+
+        labels.each_with_index do |label, i|
+
+            case label.downcase.strip
+            when "trail type"
+                trail.type = info[i].strip
+            when "difficulty"
+                trail.difficulty = info[i].strip
+            when "skill level"
+                trail.difficulty = info[i].strip
+            when "duration"
+                trail.duration = info[i].strip
+            when "distance"
+                trail.distance = info[i].strip + " miles"
+            end         
+
+        end
+
+        trail.rating = "#{doc.css('div.rating-section').children.css('img').attribute('alt').text[0]}/5 stars"
+        trail.description = doc.css('p.summary').text
+        
+        
+
+        
+        # binding.pry
 
         # rating scraper line:
         # rating = page.css("div.rating-section").children.css('img').attribute('alt').text
         # => "5 out of 5 stars"
 
-        doc
         
+        binding.pry
     end
     
     
