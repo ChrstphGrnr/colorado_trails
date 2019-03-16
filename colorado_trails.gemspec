@@ -9,15 +9,15 @@ Gem::Specification.new do |spec|
   spec.authors       = ["ChrstphGrnr"]
   spec.email         = ["46858206+ChrstphGrnr@users.noreply.github.com"]
 
-  spec.summary       = "A hiking/off-roading gem."
-  spec.description   = "This gem was developed for users to have access to the top rated hiking or off-road trails in Colorado."
+  spec.summary       = "Colorado Trails Gem"
+  spec.description   = "Developed for access to Colorado's Top 20 trails in a variety of categories."
   spec.homepage      = "https://github.com/ChrstphGrnr/colorado_trails.git"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+    spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
     spec.metadata["homepage_uri"] = spec.homepage
     spec.metadata["source_code_uri"] = "https://github.com/ChrstphGrnr/colorado_trails"
@@ -40,11 +40,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency 'pry'
-  
+  spec.add_development_dependency 'nokogiri'
   
   spec.add_dependency 'colorize'
   spec.add_dependency 'artii'
 
-  spec.add_development_dependency 'nokogiri'
+  
   
 end

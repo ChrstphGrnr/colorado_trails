@@ -99,14 +99,14 @@ class ColoradoTrails::CLI
         elsif input == "exit" || input == "quit"
             self.over_and_out
         else 
-            puts "\nI don't understand your choice, please try again.".colorize('light_red')
+            puts "\nI don't understand your choice, please try again.".colorize(:light_red)
             self.menu_2
         end 
  
     end
 
     def menu_3(trail)
-        puts "The following options are available:\n\n".colorize(:light_blue)
+        puts "\nThe following options are available:\n".colorize(:light_blue)
         puts "-> Type 'menu' to return to the main menu for a choice of different types of trails.".colorize(:light_blue)
         puts "-> Type 'trail' to return to the trails menu for more trails like#{trail.name.delete("(/\#|[0-9]/)")}.".colorize(:light_blue)
         puts "\n-> Type 'exit' to end this program.\n\n".colorize(:light_red)
@@ -116,7 +116,6 @@ class ColoradoTrails::CLI
         when 'menu'
             ColoradoTrails::Trails.clear
             self.menu
-            binding.pry
         when 'trail'
             ColoradoTrails::Trails.name_location
             self.menu_2

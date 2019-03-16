@@ -32,7 +32,7 @@ class ColoradoTrails::Trails
         
         trail_name = self.name.delete("(/\#|[0-9]/)").strip
         
-        puts "\n\nHere are the details for #{trail_name}:\n\n"
+        puts "\n\nHere are the details for #{trail_name}:\n\n".colorize(:light_blue)
         puts "Rating:       #{self.rating}".colorize(:light_blue) unless self.rating == nil || self.rating.empty?
         puts "Trail Type:   #{self.type}".colorize(:light_blue)   unless self.type == nil || self.type.empty?
         puts "Distance      #{self.distance}".colorize(:light_blue)   unless self.distance == nil || self.distance.empty?

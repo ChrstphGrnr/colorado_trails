@@ -1,8 +1,5 @@
-# require 'pry'
-# require 'nokogiri'
-# require 'open-uri'
+
 class ColoradoTrails::Scraper
-    attr_accessor
     
 
     def self.trail_list(input)
@@ -42,21 +39,40 @@ class ColoradoTrails::Scraper
 
         info = doc.css('div.info_Data').collect {|label| label.text.strip}
         labels = doc.css('div.info_label').collect {|info| info.text.strip}
-        
-        labels.each_with_index do |label, i|
 
-            case label.downcase.strip
-            when "trail type"
-                trail.type = info[i].strip
-            when "difficulty"
-                trail.difficulty = info[i].strip
-            when "skill level"
-                trail.difficulty = info[i].strip
-            when "duration"
-                trail.duration = info[i].strip
-            when "distance"
-                trail.distance = info[i].strip + " miles"
-            end         
+        if doc.css('div#elevation-wrapper').empty?
+
+            #refactor to send_method instead of case_method
+            
+            labels.each_with_index do |label, i|
+                case label.downcase.strip
+                when "trail type"
+                    trail.type = info[i].strip
+                when "difficulty"
+                    trail.difficulty = info[i].strip
+                when "skill level"
+                    trail.difficulty = info[i].strip
+                when "duration"
+                    trail.duration = info[i].strip
+                when "distance"
+                    trail.distance = info[i].strip + " miles"
+                end        
+            end
+
+        else
+            labels.each_with_index do |label, i|
+                case label.downcase.strip
+                when "trail type"
+                    trail.type = info[i].strip
+                when "difficulty"
+                    trail.difficulty = info[i].strip
+                when "skill level"
+                    trail.difficulty = info[i].strip
+                when "duration"
+                    trail.duration = info[i].strip
+                end 
+            end
+            trail.distance = doc.css('span.value').first.text + " miles"
 
         end
 
