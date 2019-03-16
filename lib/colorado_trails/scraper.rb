@@ -40,12 +40,9 @@ class ColoradoTrails::Scraper
         
         doc = Nokogiri::HTML(open(site)).css('div.Wrapper')
 
-        
         info = doc.css('div.info_Data').collect {|label| label.text.strip}
         labels = doc.css('div.info_label').collect {|info| info.text.strip}
         
-        
-
         labels.each_with_index do |label, i|
 
             case label.downcase.strip
@@ -64,16 +61,15 @@ class ColoradoTrails::Scraper
         end
 
         trail.rating = "#{doc.css('div.rating-section').children.css('img').attribute('alt').text[0]}/5 stars"
+        
         trail.description = nil 
-        binding.pry
+        # binding.pry
         if !doc.css('p.summary').empty?
             trail.description = doc.css('p.summary').text.delete'(/["]/)' 
         else   
-            trail.description = doc.css('div#TrailDetailsDescription')           
+            trail.description = doc.css('div#TrailDetailsDescription').text        
         end
-            # if doc.css('p.summary').text.delete'(/["]/)'  
-        
-    
+         
     end
 
 end

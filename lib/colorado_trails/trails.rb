@@ -19,9 +19,9 @@ class ColoradoTrails::Trails
     end
 
     def self.name_location 
-        puts "Showing Trail,  Location\n\n"
+        puts "Trail".ljust(70) + "Location\n\n"
         @@all.each do |trail|
-            puts trail.name + ",    " + trail.location
+            puts trail.name.ljust(70) + trail.location
         end
     end
 
@@ -29,11 +29,10 @@ class ColoradoTrails::Trails
 
 
     def showcase_details
-        # binding.pry
-        # attributes = [name, location, rating, description, type, url, difficulty, distance, duration]
+        
         trail_name = self.name.delete("(/\#|[0-9]/)").strip
         
-        puts "\n\nHere are the details for #{trail_name}\n\n:"
+        puts "\n\nHere are the details for #{trail_name}:\n\n"
         puts "Rating:       #{self.rating}" unless self.rating == nil || self.rating.empty?
         puts "Trail Type:   #{self.type}"   unless self.type == nil || self.type.empty?
         puts "Distance      #{self.distance}"   unless self.distance == nil || self.distance.empty?
@@ -42,22 +41,10 @@ class ColoradoTrails::Trails
         puts "Website       #{self.url}"
         
         if self.description != nil || self.description != ""
-            binding.pry
-            self.description += ' '
-            puts "\n\nHere is a short description of the trail:\n#{self.description.scan(/.{1,66} /).join("\n")}"
+            # binding.pry
+            self.description = self.description + " "
+            puts "\n\nHere is a short description of the trail:\n\n#{self.description.scan(/.{1,66} /).join("\n")}"
         end
-    
-    
-        # attributes.each do |attribute|
-        #     if attribute != nil 
-        #         binding.pry
-        #         puts "#{attribute}:     #{self.attribute}"
-        #     end
-        # end
-
-    
-    
-    
     
     end
 
