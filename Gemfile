@@ -5,5 +5,5 @@ source "https://rubygems.org"
 
 
 
-# Specify your gem's dependencies in off_road_trails.gemspec
+# Specify your gem's dependencies in colorado_trails.gemspec
 gemspec
