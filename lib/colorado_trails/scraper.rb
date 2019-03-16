@@ -11,9 +11,6 @@ class ColoradoTrails::Scraper
 
         self.site(input)
 
-        
-        # 2nd edition working code
-
         ### refactor to do it all in one .each ? 
     
         trails = Nokogiri::HTML(open(@site)).css('div.trails-listing')
@@ -23,37 +20,6 @@ class ColoradoTrails::Scraper
         trails.css('div.state').each_with_index {|location, i| ColoradoTrails::Trails.all[i].location = location.text.chomp(', CO')}
         
         trails.css('div.img-wrapper a').each_with_index {|url, i| ColoradoTrails::Trails.all[i].url = "https://www.trails.com" + url.attribute('href').value}
-       
-        # original working code  
-
-        # trails = []
-
-        # trail_list = Nokogiri::HTML(open(@site)).css('div.name').collect {|trail| trail.text}
-        # locations = Nokogiri::HTML(open(@site)).css('div.state').collect {|state| state.text.chomp(', CO')}
-        # url_list = Nokogiri::HTML(open(@site)).css("div.trail-info").collect {|trail| trail.css('div.img-wrapper a').attribute('href').value}
-        
-        # trail_list.each_with_index do |trail, i| 
-        #     trails << {:name => trail}
-        # end
-
-        # locations.each_with_index do |l, i|
-        #     trails[i][:location] = l
-        # end
-
-        # url_list.each_with_index do |url, i|
-        #     trails[i][:url] = "https://www.trails.com" + url 
-        # end
-
-        # trails.each do |trail_info|
-        #     new_trail = ColoradoTrails::Trails.new 
-        #     trail_info.each do |key, value|
-        #         new_trail.send("#{key}=", value)
-        #     end  
-        # end
-        
-        # ColoradoTrails::Trails.all.each do |trail|
-        #     puts trail.name + ', ' + trail.location
-        # end
         
     end
 
@@ -69,16 +35,16 @@ class ColoradoTrails::Scraper
     end
 
     def self.trail_details(trail)
-        # binding.pry
+        
         site = trail.url    
-        # binding.pry
+        
         doc = Nokogiri::HTML(open(site)).css('div.Wrapper')
 
         
         info = doc.css('div.info_Data').collect {|label| label.text.strip}
         labels = doc.css('div.info_label').collect {|info| info.text.strip}
         
-        # binding.pry
+        
 
         labels.each_with_index do |label, i|
 
@@ -98,8 +64,15 @@ class ColoradoTrails::Scraper
         end
 
         trail.rating = "#{doc.css('div.rating-section').children.css('img').attribute('alt').text[0]}/5 stars"
-        trail.description = doc.css('p.summary').text.delete'(/["]/)'
-        # binding.pry
+        trail.description = nil 
+        binding.pry
+        if !doc.css('p.summary').empty?
+            trail.description = doc.css('p.summary').text.delete'(/["]/)' 
+        else   
+            trail.description = doc.css('div#TrailDetailsDescription')           
+        end
+            # if doc.css('p.summary').text.delete'(/["]/)'  
+        
     
     end
 

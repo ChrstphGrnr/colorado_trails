@@ -43,6 +43,7 @@ Gem::Specification.new do |spec|
 
 
   spec.add_development_dependency 'nokogiri'
+  # spec.add_development_dependency 'openssl'
   # spec.add_development_dependency 'open-uri'
   
 end

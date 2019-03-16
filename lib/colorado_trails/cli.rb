@@ -85,7 +85,7 @@ class ColoradoTrails::CLI
         puts "-> Type 'exit' to end this program.\n\n"
 
         input = gets.chomp.downcase
-        # binding.pry
+        
         input.include?("#") ? input.delete!("#") : input
         if input.to_i.between?(1, ColoradoTrails::Trails.all.length)
             trail = ColoradoTrails::Trails.all[input.to_i - 1]
