@@ -3,6 +3,8 @@ require 'open-uri'
 require 'nokogiri'
 require 'pry'
 require 'openssl'
+require 'colorize'
+require 'artii'
 
 
 
