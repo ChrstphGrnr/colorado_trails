@@ -43,6 +43,8 @@ class ColoradoTrails::Scraper
         if doc.css('div#elevation-wrapper').empty?
 
             #refactor to send_method instead of case_method
+
+            binding.pry
             
             labels.each_with_index do |label, i|
                 case label.downcase.strip
