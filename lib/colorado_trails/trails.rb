@@ -1,7 +1,7 @@
 class ColoradoTrails::Trails 
 
     attr_accessor   :name, :location, :rating, :description, :type, :url, 
-                    :difficulty, :distance, :duration
+                    :difficulty, :distance, :duration, :accessibility
     @@all = []
 
     def initialize(name= nil, location= nil, rating= nil, url= nil)
@@ -37,8 +37,10 @@ class ColoradoTrails::Trails
         puts "Trail Type:   #{self.type}".colorize(:light_blue)   unless self.type == nil 
         puts "Distance:     #{self.distance}".colorize(:light_blue)   unless self.distance == nil 
         puts "Duration:     #{self.duration}".colorize(:light_blue)   unless self.duration == nil 
-        puts "Difficulty:   #{self.difficulty}".colorize(:light_blue) unless self.difficulty == nil 
+        puts "Difficulty:   #{self.difficulty}".colorize(:light_blue) unless self.difficulty == nil
+        puts "Accessibility #{self.accessibility}".colorize(:light_blue) unless self.accessibility == nil 
         puts "Website:      #{self.url}".colorize(:light_blue)
+        
         
         if self.description != nil || self.description != ""
             # binding.pry

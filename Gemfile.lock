@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    colorado_trails (0.1.0)
+    colorado_trails (0.1.1)
       artii
       colorize
 
@@ -39,6 +39,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.0)
+  colorado_trails!
   nokogiri
   pry
   rake (~> 10.0)

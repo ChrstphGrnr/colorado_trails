@@ -56,6 +56,8 @@ class ColoradoTrails::Scraper
                     trail.duration = info[i].strip
                 when "distance"
                     trail.distance = info[i].strip + " miles"
+                when "accessibility"
+                    trail.accessibility = info[i].strip
                 end        
             end
 
