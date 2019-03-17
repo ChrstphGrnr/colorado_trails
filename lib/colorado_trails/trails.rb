@@ -33,12 +33,12 @@ class ColoradoTrails::Trails
         trail_name = self.name.delete("(/\#|[0-9]/)").strip
         
         puts "\n\nHere are the details for #{trail_name}:\n\n".colorize(:light_blue)
-        puts "Rating:       #{self.rating}".colorize(:light_blue) unless self.rating == nil || self.rating.empty?
-        puts "Trail Type:   #{self.type}".colorize(:light_blue)   unless self.type == nil || self.type.empty?
-        puts "Distance      #{self.distance}".colorize(:light_blue)   unless self.distance == nil || self.distance.empty?
-        puts "Duration      #{self.duration}".colorize(:light_blue)   unless self.duration == nil || self.duration.empty?
-        puts "Difficulty    #{self.difficulty}".colorize(:light_blue) unless self.difficulty == nil || self.duration.empty?
-        puts "Website       #{self.url}".colorize(:light_blue)
+        puts "Rating:       #{self.rating}".colorize(:light_blue) unless self.rating == nil 
+        puts "Trail Type:   #{self.type}".colorize(:light_blue)   unless self.type == nil 
+        puts "Distance:     #{self.distance}".colorize(:light_blue)   unless self.distance == nil 
+        puts "Duration:     #{self.duration}".colorize(:light_blue)   unless self.duration == nil 
+        puts "Difficulty:   #{self.difficulty}".colorize(:light_blue) unless self.difficulty == nil 
+        puts "Website:      #{self.url}".colorize(:light_blue)
         
         if self.description != nil || self.description != ""
             # binding.pry
