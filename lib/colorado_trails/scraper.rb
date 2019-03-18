@@ -43,8 +43,6 @@ class ColoradoTrails::Scraper
         if doc.css('div#elevation-wrapper').empty?
 
             #refactor to send_method instead of case_method
-
-            binding.pry
             
             labels.each_with_index do |label, i|
                 case label.downcase.strip
@@ -83,7 +81,7 @@ class ColoradoTrails::Scraper
         trail.rating = "#{doc.css('div.rating-section').children.css('img').attribute('alt').text[0]}/5 stars"
         
         trail.description = nil 
-        # binding.pry
+    
         if !doc.css('p.summary').empty?
             trail.description = doc.css('p.summary').text.delete'(/["]/)' 
         else   
